@@ -20,21 +20,8 @@ export default function Pokemons({ data }) {
 			<TouchableOpacity onPress={() => setModalVisible(true)}>
 				<ImgPokebola source={require("../../img/pokebola.png")} />
 			</TouchableOpacity>
-			<TouchableOpacity>
-				<Image
-					source={require("../../img/likeada.png")}
-					style={{ width: 45, height: 45 }}
-				/>
-			</TouchableOpacity>
-
 			<Modal animationType="slide" visible={modalVisible}>
 				<Pokemom urlPokemom={data.url} />
-                <TouchableOpacity>
-				<Image
-					source={require("../../img/likeada.png")}
-					style={{ width: 45, height: 45 }}
-				/>
-			</TouchableOpacity>
 				<Button title="Sair" onPress={() => setModalVisible(false)} />
 			</Modal>
 		</ViewPokemom>
