@@ -8,7 +8,6 @@ import Pokemons from "../Pokemons";
 import {
 	getListAllPokemons,
 	getAllPokemonsSelector,
-	isLoadingSelector,
 } from "../../redux/PokemomAction";
 
 export default function Pokedex() {

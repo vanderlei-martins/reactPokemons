@@ -19,8 +19,6 @@ export default function Pokemom({ urlPokemom }) {
 	const dispatch = useDispatch();
 	const infoPokemom = useSelector(getPokemomSelector);
 	const loading = useSelector(isLoadingSelector);
-	const [url, setUrl] = useState("");
-	const [saldo, setSaldo] = useState("");
 	const [favoritos, setFavoritos] = useState([]);
 
 	useEffect(() => {
