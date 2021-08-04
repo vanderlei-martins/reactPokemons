@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
     pokemons: [],
-    loading: false
+    loading: false,
+    pokemom: null
 }
 
 export const PokemomReducer = (state = INITIAL_STATE, action) => {
@@ -15,6 +16,17 @@ export const PokemomReducer = (state = INITIAL_STATE, action) => {
 				...state,
 				loading: false,
 				pokemons: [...state.pokemons, ...action.payload.pokemons],
+			};
+        case "GET_POKEMOM":
+			return {
+				...state,
+				loading: true,
+			};
+		case "GET_POKEMOM_SUCCESS":
+			return {
+				...state,
+				loading: false,
+				pokemom: action.payload.pokemom
 			};
 		default:
 			return state;

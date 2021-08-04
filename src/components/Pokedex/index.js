@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ActivityIndicator } from "react-native";
 import { BackgroundPokedex, Listpokemons } from "./styles";
 
 import Pokemons from "../Pokemons";
@@ -13,24 +13,6 @@ import {
 
 export default function Pokedex() {
 	const numColumns = 2;
-	const _pokemons = [
-		{
-	        id: 1,
-			nome: "bulbassauro",
-		},{
-	        id: 2,
-			nome: "charmandar",
-		},{
-	        id: 3,
-			nome: "charmandar",
-		},{
-	        id: 4,
-			nome: "charmandar",
-		},{
-	        id: 5,
-			nome: "charmandar 3",
-		},
-	];
 
     useEffect(() => {
         dispatch(getListAllPokemons());
@@ -38,7 +20,6 @@ export default function Pokedex() {
 
     const dispatch = useDispatch();
     const listPokemons = useSelector(getAllPokemonsSelector);
-    const isLoading = useSelector(isLoadingSelector);
 
 	return (
 		<BackgroundPokedex>

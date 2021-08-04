@@ -13,3 +13,12 @@ export const listAllByPage = async (id) => {
 
 	return post;
 };
+
+
+export const infoAboutUrlPokemom = async (url) => {
+	const pokemom = await fetch(url).then((res) => res.json());
+
+    // console.log('consulta pokemom');
+    // console.log(pokemom);
+	return pokemom;
+};
