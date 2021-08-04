@@ -31,8 +31,6 @@ export default function Pokemom({ urlPokemom }) {
 				.database()
 				.ref("favoritos/")
 				.on("value", (snapshot) => {
-					// console.log('vem');
-					// console.log(snapshot);
 					const ids = [];
 					snapshot.forEach((item) => {
 						ids.push(item.key);
@@ -45,15 +43,7 @@ export default function Pokemom({ urlPokemom }) {
 	}, []);
 
 	function isFavorito(id) {
-		console.log(favoritos);
-		console.log(favoritos.indexOf(id.toString()));
 		return favoritos.indexOf(id.toString()) > -1;
-        
-        if (favoritos.indexOf(id.toString()) > -1) {
-			return "favorito";
-		}
-
-		return "nao";
 	}
 
     function carregarImgFavoritar(pokemomfavorito){
@@ -76,9 +66,7 @@ export default function Pokemom({ urlPokemom }) {
 
 	return (
 		<View>
-			<Text>{isFavorito(infoPokemom.id)}</Text>
 			<Text>{`${infoPokemom.name.toUpperCase()} : ${infoPokemom.id}`}</Text>
-			<Text>{url}</Text>
 			<Text>
 				Abilities:{" "}
 				{infoPokemom.abilities &&
