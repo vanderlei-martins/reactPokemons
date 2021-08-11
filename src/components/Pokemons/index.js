@@ -18,7 +18,9 @@ export default function Pokemons({ data }) {
 		<ViewPokemom>
 			<Nome>{data.name}</Nome>
 			<TouchableOpacity onPress={() => setModalVisible(true)}>
-				<ImgPokebola source={require("../../img/pokebola.png")} />
+				<ImgPokebola source={{
+					uri: data.imagem
+				}} />
 			</TouchableOpacity>
 			<Modal animationType="slide" visible={modalVisible}>
 				<Pokemom urlPokemom={data.url} />

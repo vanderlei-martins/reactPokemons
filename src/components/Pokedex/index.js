@@ -25,7 +25,7 @@ export default function Pokedex() {
 			<Listpokemons
 				showsVerticalScrollIndicator={false}
 				data={createRows(listPokemons, numColumns)}
-				keyExtractor={(item) => item.url}
+				keyExtractor={(item) => item.id}
 				renderItem={({ item }) => {
 					if (item.empty) {
 						return <View style={[styles.itemEmpty]} />;
