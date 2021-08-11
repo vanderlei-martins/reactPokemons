@@ -19,6 +19,4 @@ if(!firebase.apps.length){
     firebase.initializeApp(firebaseConfig);
 }
 
-console.log(firebase.apps.length);
-console.log('dentro config');
 export default firebase;

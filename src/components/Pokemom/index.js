@@ -14,6 +14,7 @@ import {
 	isLoadingSelector,
 } from "../../redux/PokemomAction";
 import firebase from "../../services/firebaseonnection";
+import { marcarComoFavorito, removerDoFavorito } from "../../controllers/PokemomController"; 
 
 export default function Pokemom({ urlPokemom }) {
 	const dispatch = useDispatch();
@@ -46,6 +47,20 @@ export default function Pokemom({ urlPokemom }) {
 
     function carregarImgFavoritar(pokemomfavorito){
         return pokemomfavorito ? require("../../img/favoritada.png") : require("../../img/naofavoritada2.png");
+    }
+
+    function marcarOuDesmarcarDoFavorito(idPokemom){
+        if(isFavorito(infoPokemom.id)){
+            removerDoFavorito(infoPokemom.id);
+            return;
+        }
+
+        if(favoritos.length == 5){
+            alert("Voce pode marcar apenas 5 pokemons como favoritos");
+            return;
+        }
+
+        marcarComoFavorito(infoPokemom.id)
     }
 
 	if (loading || !infoPokemom) {
@@ -89,7 +104,7 @@ export default function Pokemom({ urlPokemom }) {
 				style={{ width: 150, height: 150 }}
 			/>
 
-			<TouchableOpacity>
+			<TouchableOpacity onPress={() => marcarOuDesmarcarDoFavorito(infoPokemom.id)}>
 				<Image
 					source={carregarImgFavoritar(isFavorito(infoPokemom.id))}
 					style={{ width: 45, height: 45 }}
