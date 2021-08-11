@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { View, StyleSheet, Text, ActivityIndicator } from "react-native";
 import { BackgroundPokedex, Listpokemons } from "./styles";
@@ -11,14 +11,20 @@ import {
 } from "../../redux/PokemomAction";
 
 export default function Pokedex() {
+    const [pagina, setPagina] = useState(1);
 	const numColumns = 2;
-
-    useEffect(() => {
-        dispatch(getListAllPokemons());
-    }, [])
-
     const dispatch = useDispatch();
     const listPokemons = useSelector(getAllPokemonsSelector);
+
+    useEffect(() => {
+        dispatch(getListAllPokemons(pagina));
+    }, [])
+
+    async function listarMaisPokemons(){
+        let newPage = pagina + 1;
+        await setPagina(newPage);
+        await dispatch(getListAllPokemons(newPage));
+    }
 
 	return (
 		<BackgroundPokedex>
@@ -33,6 +39,8 @@ export default function Pokedex() {
 					return <Pokemons data={item} />;
 				}}
 				numColumns={numColumns}
+				onEndReached={listarMaisPokemons}
+				onEndReachedThreshold={0.1}
 			/>
 		</BackgroundPokedex>
 	);

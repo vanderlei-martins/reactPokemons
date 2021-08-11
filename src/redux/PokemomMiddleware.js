@@ -4,7 +4,7 @@ import { getListAllPokemonsSuccess, getPokemomSuccess } from "./PokemomAction";
 export const PokemomRequestMiddleware = (store) => (next) => async (action) => {
 	if (action.type === "GET_ALL_POKEMONS") {
 		next(action);
-		const pokemons = await api.listAll();
+		const pokemons = await api.listAll(action.page);
         store.dispatch(getListAllPokemonsSuccess(pokemons));
 		return;
 	}

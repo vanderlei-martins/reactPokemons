@@ -1,20 +1,12 @@
-export const listAll = async () => {
+export const listAll = async (page) => {
+    const offSet = (20 * page) - 20;
 	const pokemons = await fetch(
-		`https://pokeapi.co/api/v2/pokemon/`
+		`https://pokeapi.co/api/v2/pokemon/?offset=${offSet}&limit=20`
 	).then((res) => res.json());
     
     
 	return normalizeResponse(pokemons.results);
 };
-
-export const listAllByPage = async (id) => {
-	const post = await fetch(
-		`https://jsonplaceholder.typicode.com/posts/${id}`
-	).then((res) => res.json());
-
-	return post;
-};
-
 
 export const infoAboutUrlPokemom = async (url) => {
 	const pokemom = await fetch(url).then((res) => res.json());

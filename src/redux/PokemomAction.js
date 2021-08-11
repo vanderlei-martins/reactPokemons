@@ -1,6 +1,8 @@
-export const getListAllPokemons = () => {
+export const getListAllPokemons = (page = 1) => {
     return {
-        type: 'GET_ALL_POKEMONS'
+        type: 'GET_ALL_POKEMONS',
+        page: page
+        
     }
 }
 
